@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+  <property name="LOG_PATH" value="logs"/>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>
+        %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <appender name="SAVE-TO-FILE" class="ch.qos.logback.core.FileAppender">
+    <file>${LOG_PATH}/log.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>
+        %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
+      </Pattern>
+    </encoder>
+  </appender>
+
+  <!--<appender name="SAVE-TO-FILE"-->
+  <!--class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+  <!--<file>${LOG_PATH}/log.log</file>-->
+  <!--<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+  <!--<Pattern>-->
+  <!--%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n-->
+  <!--</Pattern>-->
+  <!--</encoder>-->
+
+  <!--&lt;!&ndash;<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">&ndash;&gt;-->
+  <!--&lt;!&ndash;&lt;!&ndash; rollover daily &ndash;&gt;&ndash;&gt;-->
+  <!--&lt;!&ndash;<fileNamePattern>&ndash;&gt;-->
+  <!--&lt;!&ndash;${LOG_PATH}/archived/log.%d{dd-MM-yyyy}.log&ndash;&gt;-->
+  <!--&lt;!&ndash;</fileNamePattern>&ndash;&gt;-->
+  <!--&lt;!&ndash;<maxHistory>10</maxHistory>&ndash;&gt;-->
+  <!--&lt;!&ndash;<totalSizeCap>100MB</totalSizeCap>&ndash;&gt;-->
+  <!--&lt;!&ndash;</rollingPolicy>&ndash;&gt;-->
+
+  <!--<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+  <!--&lt;!&ndash; rollover daily & on size&ndash;&gt;-->
+  <!--<maxFileSize>10MB</maxFileSize>-->
+  <!--<fileNamePattern>-->
+  <!--${LOG_PATH}/archived/log_%d{dd-MM-yyyy}_%i.log-->
+  <!--</fileNamePattern>-->
+  <!--<maxHistory>10</maxHistory>-->
+  <!--<totalSizeCap>100MB</totalSizeCap>-->
+  <!--</rollingPolicy>-->
+
+  <!--&lt;!&ndash;<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">&ndash;&gt;-->
+  <!--&lt;!&ndash;<fileNamePattern>&ndash;&gt;-->
+  <!--&lt;!&ndash;${LOG_PATH}/log_%i.log&ndash;&gt;-->
+  <!--&lt;!&ndash;</fileNamePattern>&ndash;&gt;-->
+  <!--&lt;!&ndash;<minIndex>2</minIndex>&ndash;&gt;-->
+  <!--&lt;!&ndash;<maxIndex>3</maxIndex>&ndash;&gt;-->
+  <!--&lt;!&ndash;</rollingPolicy>&ndash;&gt;-->
+
+  <!--&lt;!&ndash;<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">&ndash;&gt;-->
+  <!--&lt;!&ndash;&lt;!&ndash; rollover on size&ndash;&gt;&ndash;&gt;-->
+  <!--&lt;!&ndash;<maxFileSize>1KB</maxFileSize>&ndash;&gt;-->
+  <!--&lt;!&ndash;</triggeringPolicy>&ndash;&gt;-->
+
+  <!--</appender>-->
+
+  <!--<root level="debug">-->
+  <root level="OFF">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="SAVE-TO-FILE"/>
+  </root>
+
+  <logger name="com.lankydan.service.MyServiceImpl" additivity="false" level="debug">
+    <appender-ref ref="STDOUT"/>
+    <!--<appender-ref ref="SAVE-TO-FILE"/>-->
+  </logger>
+
+  <!--<logger name="org.springframework.boot.SpringApplication" level="debug">-->
+  <!--<appender-ref ref="STDOUT" />-->
+  <!--</logger>-->
+</configuration>
