@@ -11,14 +11,15 @@
     </encoder>
   </appender>
 
-  <appender name="SAVE-TO-FILE" class="ch.qos.logback.core.FileAppender">
-    <file>${LOG_PATH}/log.log</file>
-    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <Pattern>
-        %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
-      </Pattern>
-    </encoder>
-  </appender>
+<!--  Add this back in and take out the other `SAVE-TO-FILE` appender to use non rolling appender-->
+<!--  <appender name="SAVE-TO-FILE" class="ch.qos.logback.core.FileAppender">-->
+<!--    <file>${LOG_PATH}/log.log</file>-->
+<!--    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--      <Pattern>-->
+<!--        %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n-->
+<!--      </Pattern>-->
+<!--    </encoder>-->
+<!--  </appender>-->
 
   <appender name="SAVE-TO-FILE"
             class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -73,7 +74,7 @@
 
   <logger name="com.lankydan.service.MyServiceImpl" additivity="false" level="debug">
     <appender-ref ref="STDOUT"/>
-    <!--<appender-ref ref="SAVE-TO-FILE"/>-->
+    <appender-ref ref="SAVE-TO-FILE"/>
   </logger>
 
   <!--<logger name="org.springframework.boot.SpringApplication" level="debug">-->
