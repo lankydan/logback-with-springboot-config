@@ -72,7 +72,7 @@
     <appender-ref ref="SAVE-TO-FILE"/>
   </root>
 
-  <logger name="com.lankydan.service.MyServiceImpl" additivity="false" level="debug">
+  <logger name="com.lankydan.service" additivity="false" level="info">
     <appender-ref ref="STDOUT"/>
     <appender-ref ref="SAVE-TO-FILE"/>
   </logger>
